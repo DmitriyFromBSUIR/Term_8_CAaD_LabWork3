@@ -1,0 +1,1426 @@
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 20
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1] main.cpp(783,1)
+  -> (785,10) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (785,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (785,44) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+
+===========================================================================
+
+Begin optimization report for: __gthread_active_p()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gthread_active_p()) /usr/include/i386-linux-gnu/c++/4.9/bits/gthr-default.h(248,1)
+
+===========================================================================
+
+Begin optimization report for: time_RDTSC()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (time_RDTSC()) [3] main.cpp(88,1)
+
+===========================================================================
+
+Begin optimization report for: time_start()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (time_start()) [4] main.cpp(99,1)
+  -> INLINE: (101,20) time_RDTSC()
+
+===========================================================================
+
+Begin optimization report for: handmadeVectorizationByASM(float **, size_t, size_t, float **, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (handmadeVectorizationByASM(float **, size_t, size_t, float **, size_t, size_t)) [5] main.cpp(320,1)
+  -> INLINE (MANUAL): (328,18) matrixTranspose<float>(float **, int, int)
+    -> (292,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (292,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (292,65) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (330,28) memAlloc<float>(size_t, size_t, size_t)
+    -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+    -> EXTERN: (21,9) printf(const char *, ...)
+    -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+    -> EXTERN: (32,13) printf(const char *, ...)
+  -> INLINE: (339,39) time_start()
+    -> INLINE: (101,20) time_RDTSC()
+  -> INLINE: (469,30) time_stop(long long)
+    -> INLINE: (107,13) time_RDTSC()
+  -> (471,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (471,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (472,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (472,76) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long long)
+  -> (472,94) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (473,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (473,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (477,18) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (477,26) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (477,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (483,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (483,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (483,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(296,2) inlined into main.cpp(328,18)
+   remark #25445: Loop Interchange not done due to: Data Dependencies
+   remark #25446: Dependencies found between following statements:  [From_Line# -> (Dependency Type) To_Line#]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 310]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 310]
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation: ( 1 2 ) --> ( 2 1 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(328,18)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed ANTI dependence between mb line 310 and mb line 312
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(328,18)
+   <Remainder>
+   LOOP END
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(330,28)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(343,13)
+   remark #15536: simd loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.
+
+   LOOP BEGIN at main.cpp(345,17)
+      remark #15536: loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.
+
+      LOOP BEGIN at main.cpp(373,0)
+         remark #15526: loop was not vectorized: ASM code cannot be vectorized   [ main.cpp(373,0) ]
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: matrixTranspose<float>(float **, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (matrixTranspose<float>(float **, int, int)) main.cpp(289,1)
+
+===========================================================================
+
+Begin optimization report for: memAlloc<float>(size_t, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (memAlloc<float>(size_t, size_t, size_t)) main.cpp(9,1)
+
+===========================================================================
+
+Begin optimization report for: handmadeVectorizationByASMwithOpenMP(float **, size_t, size_t, float **, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (handmadeVectorizationByASMwithOpenMP(float **, size_t, size_t, float **, size_t, size_t)) [8] main.cpp(532,1)
+  -> INLINE (MANUAL): (540,18) matrixTranspose<float>(float **, int, int)
+    -> (292,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (292,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (292,65) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (542,28) memAlloc<float>(size_t, size_t, size_t)
+    -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+    -> EXTERN: (21,9) printf(const char *, ...)
+    -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+    -> EXTERN: (32,13) printf(const char *, ...)
+  -> EXTERN: (555,13) omp_set_dynamic(int)
+  -> EXTERN: (556,18) omp_get_max_threads()
+  -> (557,9) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> EXTERN: (557,25) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (557,36) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> EXTERN: (558,4) omp_set_num_threads(int)
+  -> INLINE: (560,39) time_start()
+    -> INLINE: (101,20) time_RDTSC()
+  -> INLINE: (692,30) time_stop(long long)
+    -> INLINE: (107,13) time_RDTSC()
+  -> (694,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (694,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (695,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (695,76) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long long)
+  -> (695,94) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (696,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (696,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (700,18) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (700,26) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (700,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (706,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (706,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (706,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at main.cpp(564,13)
+   remark #16201: OpenMP DEFINED REGION WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(296,2) inlined into main.cpp(540,18)
+   remark #25445: Loop Interchange not done due to: Data Dependencies
+   remark #25446: Dependencies found between following statements:  [From_Line# -> (Dependency Type) To_Line#]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 310]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 310]
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation: ( 1 2 ) --> ( 2 1 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(540,18)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed ANTI dependence between mb line 310 and mb line 312
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(540,18)
+   <Remainder>
+   LOOP END
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(542,28)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(567,13)
+   remark #15536: loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.
+
+   LOOP BEGIN at main.cpp(569,17)
+      remark #15536: loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.
+
+      LOOP BEGIN at main.cpp(597,0)
+         remark #15526: loop was not vectorized: ASM code cannot be vectorized   [ main.cpp(597,0) ]
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: LabWork1_and_LabWork2_run()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (LabWork1_and_LabWork2_run()) [9] main.cpp(715,1)
+  -> (716,10) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (716,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (716,49) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (716,57) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (718,26) memAlloc<float>(size_t, size_t, size_t)
+    -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+    -> EXTERN: (21,9) printf(const char *, ...)
+    -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+    -> EXTERN: (32,13) printf(const char *, ...)
+  -> INLINE (MANUAL): (720,26) memAlloc<float>(size_t, size_t, size_t)
+    -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+    -> EXTERN: (21,9) printf(const char *, ...)
+    -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+    -> EXTERN: (32,13) printf(const char *, ...)
+  -> INLINE (MANUAL): (731,18) matrixInit<float>(int, int)
+    -> INLINE (MANUAL): (257,11) memAlloc<float>(size_t, size_t, size_t)
+      -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+      -> EXTERN: (21,9) printf(const char *, ...)
+      -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+      -> EXTERN: (32,13) printf(const char *, ...)
+    -> EXTERN: (263,23) rand()
+  -> INLINE (MANUAL): (732,18) matrixTranspose<float>(float **, int, int)
+    -> (292,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (292,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (292,65) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> DELETED: (735,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (735,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (735,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (735,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (735,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (735,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (735,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> DELETED: (736,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (736,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (736,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (736,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (736,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (736,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (736,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> (741,10) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (741,72) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (742,18) matrixMultAutoVect<float>(float **, size_t, size_t, float **, size_t, size_t)
+    -> INLINE (MANUAL): (118,28) memAlloc<float>(size_t, size_t, size_t)
+      -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+      -> EXTERN: (21,9) printf(const char *, ...)
+      -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+      -> EXTERN: (32,13) printf(const char *, ...)
+    -> INLINE: (119,39) time_start()
+      -> INLINE: (101,20) time_RDTSC()
+    -> INLINE: (133,44) time_stop(long long)
+      -> INLINE: (107,13) time_RDTSC()
+    -> (134,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (134,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (135,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (135,48) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long long)
+    -> (135,66) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (136,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (136,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (140,18) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (140,26) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (140,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (146,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (146,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (146,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (743,10) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (743,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (743,83) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (744,18) matrixMult<float>(float **, size_t, size_t, float **, size_t, size_t)
+    -> INLINE (MANUAL): (218,28) memAlloc<float>(size_t, size_t, size_t)
+      -> EXTERN: (18,22) aligned_alloc(size_t, size_t)
+      -> EXTERN: (21,9) printf(const char *, ...)
+      -> EXTERN: (29,28) aligned_alloc(size_t, size_t)
+      -> EXTERN: (32,13) printf(const char *, ...)
+    -> INLINE: (219,39) time_start()
+      -> INLINE: (101,20) time_RDTSC()
+    -> INLINE: (233,44) time_stop(long long)
+      -> INLINE: (107,13) time_RDTSC()
+    -> (234,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (234,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (235,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (235,76) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, long long)
+    -> (235,94) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (236,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (236,85) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (240,18) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (240,26) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (240,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (246,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+    -> (246,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+    -> (246,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> DELETED: (746,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (746,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (746,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (746,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (746,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (746,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (746,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> DELETED: (747,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (747,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (747,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (747,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (747,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (747,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (747,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> (753,10) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (753,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (753,91) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> DELETED: (761,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (761,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (761,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (761,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (761,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (761,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (761,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> DELETED: (762,5) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (762,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (762,5) matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+  -> INLINE (MANUAL): (762,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (762,22) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (762,22) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (762,22) std::allocator<char>::allocator(std::allocator<char> *)
+  -> DELETED: (764,10) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> DELETED: (764,10) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (764,10) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> INLINE (MANUAL): (764,10) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> INLINE (MANUAL): (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(81,9) __gthread_active_p()
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+          -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/ext/atomicity.h:(84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> (764,25) filesAreIdenteticaly<float>(std::string *, size_t, size_t, std::string *, size_t, size_t)
+  -> INLINE (MANUAL): (764,53) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> DELETED: (764,53) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> EXTERN: (764,53) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (764,53) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE (MANUAL): (764,75) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,9) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_rep(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+      -> INLINE (MANUAL): (301,44) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(547,19) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_dispose(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+      -> INLINE (MANUAL): (240,34) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_S_empty_rep()
+      -> ARGS_IN_REGS: (245,12) __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+      -> EXTERN: (249,5) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep::_M_destroy(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_Rep *, const std::allocator<char> &)
+    -> DELETED: /usr/include/c++/4.9/bits/basic_string.h:(547,36) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::get_allocator(std::basic_string<char, std::char_traits<char>, std::allocator<char>>::allocator_type *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> EXTERN: (764,75) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, const std::allocator<char> &)
+  -> DELETED: (764,75) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> DELETED: (764,75) std::allocator<char>::allocator(std::allocator<char> *)
+  -> (767,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (767,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (767,61) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (767,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (769,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (769,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (769,62) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (769,70) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (779,10) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (779,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (779,90) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (779,98) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(259,2) inlined into main.cpp(731,18)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at main.cpp(261,3) inlined into main.cpp(731,18)
+      remark #15527: loop was not vectorized: function call to rand() cannot be vectorized   [ main.cpp(263,23) ]
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(296,2) inlined into main.cpp(732,18)
+   remark #25445: Loop Interchange not done due to: Data Dependencies
+   remark #25446: Dependencies found between following statements:  [From_Line# -> (Dependency Type) To_Line#]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [310 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 312]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Anti) 311]
+   remark #25447: Dependence found between following statements:  [311 -> (Flow) 310]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 312]
+   remark #25447: Dependence found between following statements:  [312 -> (Output) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 311]
+   remark #25447: Dependence found between following statements:  [312 -> (Flow) 310]
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation: ( 1 2 ) --> ( 2 1 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(732,18)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed ANTI dependence between matrix.11729 line 310 and matrix.11729 line 312
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at main.cpp(298,3) inlined into main.cpp(732,18)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(120,13) inlined into main.cpp(742,18)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at main.cpp(122,17) inlined into main.cpp(742,18)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Peeled, Multiversioned v1>
+      LOOP END
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Multiversioned v1>
+         remark #25228: Loop multiversioned for Data Dependence
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 2 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15475: --- begin vector loop cost summary ---
+         remark #15476: scalar loop cost: 11 
+         remark #15477: vector loop cost: 2.000 
+         remark #15478: estimated potential speedup: 5.150 
+         remark #15479: lightweight vector operations: 7 
+         remark #15488: --- end vector loop cost summary ---
+         remark #25015: Estimate of max trip count of loop=83
+      LOOP END
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Alternate Alignment Vectorized Loop, Multiversioned v1>
+         remark #25015: Estimate of max trip count of loop=83
+      LOOP END
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Remainder, Multiversioned v1>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Remainder, Multiversioned v1>
+      LOOP END
+
+      LOOP BEGIN at main.cpp(127,21) inlined into main.cpp(742,18)
+      <Multiversioned v2>
+         remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+         remark #25438: unrolled without remainder by 2  
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(222,13) inlined into main.cpp(744,18)
+   remark #25445: Loop Interchange not done due to: Data Dependencies
+   remark #25446: Dependencies found between following statements:  [From_Line# -> (Dependency Type) To_Line#]
+   remark #25447: Dependence found between following statements:  [229 -> (Output) 229]
+   remark #25447: Dependence found between following statements:  [229 -> (Flow) 229]
+   remark #25447: Dependence found between following statements:  [229 -> (Anti) 229]
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation: ( 1 2 3 ) --> ( 1 3 2 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at main.cpp(224,17) inlined into main.cpp(744,18)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+      LOOP BEGIN at main.cpp(227,21) inlined into main.cpp(744,18)
+         remark #15319: loop was not vectorized: novector directive used
+         remark #25438: unrolled without remainder by 2  
+      LOOP END
+   LOOP END
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(718,26)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(720,26)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(731,18)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(742,18)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(26,5) inlined into main.cpp(744,18)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.   [ main.cpp(29,28) ]
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::char_traits<char>::length(const std::char_traits<char>::char_type *)) [12] /usr/include/c++/4.9/bits/char_traits.h(263,7)
+  -> EXTERN: (263,16) __builtin_strlen(const char *)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)) [15] /usr/include/c++/4.9/ext/atomicity.h(79,3)
+  -> INLINE (MANUAL): (81,9) __gthread_active_p()
+  -> INLINE (MANUAL): (82,14) __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+    -> EXTERN: (49,12) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+  -> INLINE (MANUAL): (84,14) __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+
+===========================================================================
+
+Begin optimization report for: matrixFileOutput<float>(std::string *, float **, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (matrixFileOutput<float>(std::string *, float **, size_t, size_t)) [18] main.cpp(67,1)
+  -> (68,13) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+  -> INLINE (MANUAL): (68,13) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(806,7) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (806,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (806,7) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> (806,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> EXTERN: (806,7) std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> INLINE (MANUAL): (806,7) std::basic_iostream<char, std::char_traits<char>>::basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> (606,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): (606,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: (608,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: /usr/include/c++/4.9/ostream:(385,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> INLINE (MANUAL): (806,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+      -> EXTERN: (808,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+  -> INLINE (MANUAL): (69,10) std::basic_fstream<char, std::char_traits<char>>::open(std::basic_fstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(892,18) std::basic_filebuf<char, std::char_traits<char>>::open(std::basic_filebuf<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(893,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(897,10) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+  -> INLINE (MANUAL): (69,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::c_str(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(1820,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> INLINE (MANUAL): (69,43) std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+  -> INLINE (MANUAL): (70,14) std::basic_fstream<char, std::char_traits<char>>::is_open(std::basic_fstream<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(869,27) std::basic_filebuf<char, std::char_traits<char>>::is_open(const std::basic_filebuf<char, std::char_traits<char>> *) const
+      -> EXTERN: (228,24) std::__basic_file<char>::is_open(const std::__basic_file<char> *) const
+  -> (72,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (72,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (72,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (72,64) std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::basic_ostream<char, std::char_traits<char>> &, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+  -> (72,76) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (73,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> (80,18) std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, std::_Setw)
+  -> INLINE (MANUAL): (80,26) std::setw(int)
+  -> (80,29) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float)
+  -> (82,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (84,10) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (84,10) std::basic_fstream<char, std::char_traits<char>>::close(std::basic_fstream<char, std::char_traits<char>> *)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(931,18) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(932,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(77,9)
+   remark #15520: loop was not vectorized: loop with early exits cannot be vectorized unless it meets search loop idiom criteria
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at main.cpp(75,5)
+   remark #15341: loop was not vectorized: nonstandard loop is not a vectorization candidate
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::ios_base::width(std::ios_base *, std::streamsize)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::ios_base::width(std::ios_base *, std::streamsize)) [21] /usr/include/c++/4.9/bits/ios_base.h(660,5)
+
+===========================================================================
+
+Begin optimization report for: filesAreIdenteticaly<float>(std::string *, size_t, size_t, std::string *, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (filesAreIdenteticaly<float>(std::string *, size_t, size_t, std::string *, size_t, size_t)) [23] main.cpp(493,1)
+  -> (494,13) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+  -> INLINE (MANUAL): (494,13) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(806,7) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (806,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (806,7) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> (806,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> EXTERN: (806,7) std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> INLINE (MANUAL): (806,7) std::basic_iostream<char, std::char_traits<char>>::basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> (606,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): (606,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: (608,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: /usr/include/c++/4.9/ostream:(385,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> INLINE (MANUAL): (806,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+      -> EXTERN: (808,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+  -> (494,20) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+  -> INLINE (MANUAL): (494,20) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(806,7) std::basic_fstream<char, std::char_traits<char>>::basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (806,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (806,7) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> (806,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> EXTERN: (806,7) std::basic_filebuf<char, std::char_traits<char>>::basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+      -> INLINE (MANUAL): (806,7) std::basic_iostream<char, std::char_traits<char>>::basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> (606,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): (606,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: (608,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(830,7) std::basic_ostream<char, std::char_traits<char>>::basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(384,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+          -> EXTERN: /usr/include/c++/4.9/ostream:(385,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(830,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> INLINE (MANUAL): (806,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(454,7) std::basic_ios<char, std::char_traits<char>>::basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (454,7) std::ios_base::ios_base(std::ios_base *const)
+      -> EXTERN: (808,15) std::basic_ios<char, std::char_traits<char>>::init(std::basic_ios<char, std::char_traits<char>> *, std::basic_streambuf<char, std::char_traits<char>> *)
+  -> INLINE (MANUAL): (495,11) std::basic_fstream<char, std::char_traits<char>>::open(std::basic_fstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(892,18) std::basic_filebuf<char, std::char_traits<char>>::open(std::basic_filebuf<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(893,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(897,10) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+  -> INLINE (MANUAL): (495,30) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::c_str(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(1820,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> INLINE (MANUAL): (496,15) std::basic_fstream<char, std::char_traits<char>>::is_open(std::basic_fstream<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(869,27) std::basic_filebuf<char, std::char_traits<char>>::is_open(const std::basic_filebuf<char, std::char_traits<char>> *) const
+      -> EXTERN: (228,24) std::__basic_file<char>::is_open(const std::__basic_file<char> *) const
+  -> (498,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (498,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (498,52) std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::basic_ostream<char, std::char_traits<char>> &, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+  -> (498,69) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (499,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (499,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (501,11) std::basic_fstream<char, std::char_traits<char>>::open(std::basic_fstream<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(892,18) std::basic_filebuf<char, std::char_traits<char>>::open(std::basic_filebuf<char, std::char_traits<char>> *, const char *, std::ios_base::openmode)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(893,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(897,10) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+  -> INLINE (MANUAL): (501,30) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::c_str(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+    -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_string.h:(1820,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_data(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *) const
+  -> INLINE (MANUAL): (502,15) std::basic_fstream<char, std::char_traits<char>>::is_open(std::basic_fstream<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(869,27) std::basic_filebuf<char, std::char_traits<char>>::is_open(const std::basic_filebuf<char, std::char_traits<char>> *) const
+      -> EXTERN: (228,24) std::__basic_file<char>::is_open(const std::__basic_file<char> *) const
+  -> (504,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (504,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (504,52) std::operator<<<char, std::char_traits<char>, std::allocator<char>>(std::basic_ostream<char, std::char_traits<char>> &, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+  -> (504,73) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (505,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (505,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> (512,19) std::basic_istream<char, std::char_traits<char>>::operator>>(std::basic_istream<char, std::char_traits<char>> *, float &)
+  -> (513,19) std::basic_istream<char, std::char_traits<char>>::operator>>(std::basic_istream<char, std::char_traits<char>> *, float &)
+  -> INLINE (MANUAL): (514,57) std::abs(float)
+  -> INLINE (MANUAL): (516,17) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (516,17) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> (522,14) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (522,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (522,34) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE (MANUAL): (523,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (523,9) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (526,11) std::basic_fstream<char, std::char_traits<char>>::close(std::basic_fstream<char, std::char_traits<char>> *)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(931,18) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(932,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+  -> INLINE (MANUAL): (527,11) std::basic_fstream<char, std::char_traits<char>>::close(std::basic_fstream<char, std::char_traits<char>> *)
+    -> EXTERN: /usr/include/c++/4.9/fstream:(931,18) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(932,10) std::basic_ios<char, std::char_traits<char>>::setstate(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> EXTERN: /usr/include/c++/4.9/bits/basic_ios.h:(152,15) std::basic_ios<char, std::char_traits<char>>::clear(std::basic_ios<char, std::char_traits<char>> *, std::ios_base::iostate)
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,27) std::basic_ios<char, std::char_traits<char>>::rdstate(const std::basic_ios<char, std::char_traits<char>> *) const
+      -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(152,37) std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+  -> INLINE (MANUAL): (528,5) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+  -> INLINE (MANUAL): (528,5) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *const)
+    -> INLINE (MANUAL): /usr/include/c++/4.9/fstream:(849,7) std::basic_fstream<char, std::char_traits<char>>::~basic_fstream(std::basic_fstream<char, std::char_traits<char>> *, const int *const *)
+      -> (850,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+      -> (850,7) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+      -> INLINE (MANUAL): (850,9) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+          -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_iostream<char, std::char_traits<char>>::~basic_iostream(std::basic_iostream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+        -> /usr/include/c++/4.9/istream:(827,25) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ostream<char, std::char_traits<char>>::~basic_ostream(std::basic_ostream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/ostream:(93,26) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_istream<char, std::char_traits<char>>::~basic_istream(std::basic_istream<char, std::char_traits<char>> *, const int *const *)
+          -> INLINE (MANUAL): (104,36) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+            -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+              -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+        -> INLINE (MANUAL): /usr/include/c++/4.9/istream:(827,27) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/bits/basic_ios.h:(276,7) std::basic_ios<char, std::char_traits<char>>::~basic_ios(std::basic_ios<char, std::char_traits<char>> *)
+            -> EXTERN: (276,22) std::ios_base::~ios_base(std::ios_base *const)
+      -> INLINE (MANUAL): (850,9) std::basic_filebuf<char, std::char_traits<char>>::~basic_filebuf(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,7) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+        -> EXTERN: (220,15) std::basic_filebuf<char, std::char_traits<char>>::close(std::basic_filebuf<char, std::char_traits<char>> *)
+        -> EXTERN: (220,24) std::__basic_file<char>::~__basic_file(std::__basic_file<char> *)
+        -> INLINE (MANUAL): (220,24) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *const)
+          -> INLINE (MANUAL): /usr/include/c++/4.9/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *)
+            -> EXTERN: (198,9) std::locale::~locale(std::locale *)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(510,9)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+Fusion of IFs performed in _Z20filesAreIdenteticalyIfEbSsjjSsjj at line 93
+
+Fusion of IFs performed in _Z20filesAreIdenteticalyIfEbSsjjSsjj at line 104
+
+Fusion of IFs performed in _Z20filesAreIdenteticalyIfEbSsjjSsjj at line 93
+
+Fusion of IFs performed in _Z20filesAreIdenteticalyIfEbSsjjSsjj at line 104
+===========================================================================
+
+Begin optimization report for: matrixMultAutoVect<float>(float **, size_t, size_t, float **, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (matrixMultAutoVect<float>(float **, size_t, size_t, float **, size_t, size_t)) main.cpp(112,1)
+
+===========================================================================
+
+Begin optimization report for: matrixMult<float>(float **, size_t, size_t, float **, size_t, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (matrixMult<float>(float **, size_t, size_t, float **, size_t, size_t)) main.cpp(212,1)
+
+===========================================================================
+
+Begin optimization report for: std::ctype<char>::widen(const std::ctype<char> *, char) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::ctype<char>::widen(const std::ctype<char> *, char) const) /usr/include/c++/4.9/bits/locale_facets.h(866,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *)) /usr/include/c++/4.9/ext/new_allocator.h(79,45)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *const)) /usr/include/c++/4.9/ext/new_allocator.h(79,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *, const __gnu_cxx::new_allocator<char> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *, const __gnu_cxx::new_allocator<char> &)) /usr/include/c++/4.9/ext/new_allocator.h(81,65)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *const, const __gnu_cxx::new_allocator<char> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<char>::new_allocator(__gnu_cxx::new_allocator<char> *const, const __gnu_cxx::new_allocator<char> &)) /usr/include/c++/4.9/ext/new_allocator.h(81,7)
+
+===========================================================================
+
+Begin optimization report for: std::abs(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::abs(float)) /usr/include/c++/4.9/cmath(88,3)
+
+===========================================================================
+
+Begin optimization report for: std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::operator|(std::_Ios_Openmode, std::_Ios_Openmode)) /usr/include/c++/4.9/bits/ios_base.h(124,3)
+
+===========================================================================
+
+Begin optimization report for: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)) /usr/include/c++/4.9/bits/ios_base.h(164,3)
+
+===========================================================================
+
+Begin optimization report for: std::setw(int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::setw(int)) /usr/include/c++/4.9/iomanip(226,3)
+
+===========================================================================
+
+Begin optimization report for: std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)) /usr/include/c++/4.9/bits/basic_ios.h(47,5)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__exchange_and_add(volatile _Atomic_word *, int)) /usr/include/c++/4.9/ext/atomicity.h(49,3)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__exchange_and_add_single(_Atomic_word *, int)) /usr/include/c++/4.9/ext/atomicity.h(66,3)
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [74] <compiler generated>
+  -> EXTERN: /usr/include/c++/4.9/iostream:(74,25) __cxa_atexit()
+  -> EXTERN: /usr/include/c++/4.9/iostream:(74,25) std::ios_base::Init::Init(std::ios_base::Init *)
+
+===========================================================================
+
+Begin optimization report for: matrixInit<float>(int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (matrixInit<float>(int, int)) main.cpp(255,1)
+
+===========================================================================
+
+Begin optimization report for: time_stop(long long)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (time_stop(long long)) [76] main.cpp(106,1)
+  -> INLINE: (107,13) time_RDTSC()
+
+===========================================================================

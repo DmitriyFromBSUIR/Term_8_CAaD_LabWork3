@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1458215887 source:/home/dmitry/Projects/Codeblocks_Workspace/Term_8_CAaD_LabWork3/main.cpp
+	"Libs.h"
+
+1458214960 /home/dmitry/Projects/Codeblocks_Workspace/Term_8_CAaD_LabWork3/Libs.h
+	<stdio.h>
+	<stdlib.h>
+	<algorithm>
+	<functional>
+	<string.h>
+	<string>
+	<math.h>
+	<cmath>
+	<iostream>
+	<fstream>
+	<iomanip>
+	<time.h>
+	<ctime>
+	<omp.h>
+	<malloc.h>
+	<sys/types.h>
+	<stdint.h>
+	<smmintrin.h>
+	<emmintrin.h>
+	<xmmintrin.h>
+	<sys/time.h>
+

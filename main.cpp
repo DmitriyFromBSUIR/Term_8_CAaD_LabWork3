@@ -711,7 +711,7 @@ float** handmadeVectorizationByASMwithOpenMP(float** ma, size_t n1, size_t m1, f
     return resultMatrix;
 }
 
-void LabWork1_and LabWork2_run()
+void LabWork1_and_LabWork2_run()
 {
     cout << endl << "Vectorization is running!" << endl << endl;
 
@@ -755,7 +755,8 @@ void LabWork1_and LabWork2_run()
     //startTime = time_start();
 
     //ptrMatrixF = handmadeVectorizationByASM<float>(ptrMatrixA, N, M, ptrMatrixB, N, M);
-    ptrMatrixF = handmadeVectorizationByASM(ptrMatrixA, N, M, ptrMatrixB, N, M);
+
+    //ptrMatrixF = handmadeVectorizationByASM(ptrMatrixA, N, M, ptrMatrixB, N, M);
 
     matrixFileOutput("matrix_F.txt", ptrMatrixF, N, M);
     matrixFileOutput("matrix_F_.txt", ptrMatrixC, N, M);
@@ -780,8 +781,8 @@ void LabWork1_and LabWork2_run()
 
 int main()
 {
-    //LabWork1_and LabWork2_run();
-
+    //LabWork1_and_LabWork2_run();
+    cout << endl << "LabWork 3 is running" << endl;
 
 
     return 0;
