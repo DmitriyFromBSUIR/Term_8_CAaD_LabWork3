@@ -756,7 +756,7 @@ void LabWork1_and_LabWork2_run()
 
     //ptrMatrixF = handmadeVectorizationByASM<float>(ptrMatrixA, N, M, ptrMatrixB, N, M);
 
-    //ptrMatrixF = handmadeVectorizationByASM(ptrMatrixA, N, M, ptrMatrixB, N, M);
+    ptrMatrixF = handmadeVectorizationByASM(ptrMatrixA, N, M, ptrMatrixB, N, M);
 
     matrixFileOutput("matrix_F.txt", ptrMatrixF, N, M);
     matrixFileOutput("matrix_F_.txt", ptrMatrixC, N, M);
@@ -779,11 +779,1054 @@ void LabWork1_and_LabWork2_run()
     cout << endl << "==================================================================" << endl << endl;
 }
 
+void sseInstructionsLatencyAndThroughput(int instructionCycles=10000)
+{
+    srand(NULL);
+    float val1 = rand()/10;
+    float val2 = rand()/10;
+    int cycles = instructionCycles;
+
+    long long int processorTicks = 0;
+
+    long long int startTime = time_start();
+
+    /*
+    __asm {
+        xorps xmm0, xmm0
+        xorps xmm1, xmm1
+        movss xmm0, val1
+        movss xmm1, val2
+        mov ecx, cycles
+
+        loop:
+            dec ecx
+
+            addps xmm0, xmm1
+
+            cmp ecx, 0
+            jne loop ;
+    }
+    */
+    __asm {
+        xorps xmm0, xmm0
+        xorps xmm1, xmm1
+        movss xmm0, val1
+        movss xmm1, val2
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+        addps xmm0, xmm1
+
+    }
+    processorTicks = time_stop(startTime);
+
+    cout << "=============================================================" << endl;
+    cout << "Latency = " << processorTicks/cycles << endl;
+    cout << "=============================================================" << endl;
+}
+
 int main()
 {
     //LabWork1_and_LabWork2_run();
     cout << endl << "LabWork 3 is running" << endl;
 
+    sseInstructionsLatencyAndThroughput();
 
     return 0;
 }
